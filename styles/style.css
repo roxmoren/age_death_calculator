@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'the_huntsman';
+    src: url('fonts/the_huntsman-webfont.woff') format('woff'),
+         url('fonts/the_huntsman-webfont.woff2') format('woff2');
+}
+
+
+h1 {
+    font-family: 'the_huntsman';
+    font-size: 76px;
+    letter-spacing: 3px;
+}
+
+.contentText h2 { 
+    font-family: 'Vollkorn', serif;
+    font-size: 32px;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9914e7f5b1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item1>">
+            <i class="fa-sharp fa-solid fa-hourglass"></i>
+            <h1>Age Calculator</h1>
+        </div>
+        <div class="contentText">
+            <h2>Number of Days Alive</h2>
+            </br>
+            <hr/>
+            <label>Birthday<input type="date" name="bday" id="bday">
+                <div id="days"></div>
+                <div id="til10k"></div>
+        </div>
+            <button onclick="age()">Calc Age</button>
+        <div id="days"></div>
+        <div id="til10k"></div>
+        <div id="tilDeath"></div>
+    </div>
+
+    <script>
+    function age()
+    {
+    var bday = new Date(document.getElementById("bday").value);
+    var today = (new Date().getTime());
+    var age = today-(bday.getTime());
+        var milliInADay = 1000*60*60*24;
+    var days= age/milliInADay;
+    var milli10k = 10000 * milliInADay;
+    var milliTil10k = milli10k-age; 
+    var daysTil10k = milliTil10k/milliInADay; 
+
+    var date10k = new Date(milli10k+bday.getTime());
+
+    var month = date10k.getMonth() + 1
+    var day = date10k.getDate()
+    var year = date10k.getFullYear ()
+    var daysin77 = (77.28*365.25);
+    var daysTilDie = daysin77-days;
+    
+    document.getElementById("days").innerHTML="Congradulations, you're "+Math.round(days)+"days old";
+    document.getElementById("til10k").innerHTML="you'll be 10k days old on "+day+"/"+month+"/"+year;    
+    document.getElementById("tilDeath").innerHTML="According to the average lifespan, you have "+Math.round(daysTilDie)+" days to live.";
+    }
+
+    </script>
+</body>
+</html>
