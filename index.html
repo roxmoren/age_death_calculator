@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!--Start main grid content-->
     <div class="grid-container">
+        <!--Header-->
         <div class="grid-item1">
             <p>R-M</p>
         </div>
@@ -17,9 +19,11 @@
             <h2>Age<br>Calculator</h2>
             <hr>
         </div>
+        <!--Hook content-->
         <div class="grid-item3">
             <h1 class="hook">How<br>Many Days<br>Have You<br>Lived?</h1>
         </div>
+        <!--Calculator content-->
         <div class="grid-item4">
             <div class="calculatorContent">
                 <p>Enter<br>Your Birthdate</p>
@@ -30,68 +34,68 @@
                 <div id="tilDeath"></div>
             </div>
         </div>
+        <!--Digital clock content-->
         <div class="grid-item5">
             <h2 id="DigitalCLOCK" class="clock" onload="showTime()"></h2>
         </div>
+        <!--Hook footer-->
         <div class="grid-item6">
             <h3 class="content2">And How Many...Do You Have Left?</h3>
         </div>
     </div>
-
+    <!--Calculator function-->
     <script>
-    function age()
-    {
-        var bday = new Date(document.getElementById("bday").value);
-        var today = (new Date().getTime());
-        var age = today-(bday.getTime());
-        var milliInADay = 1000*60*60*24;
-        var days= age/milliInADay;
-        var milli10k = 10000 * milliInADay;
-        var milliTil10k = milli10k-age; 
-        var daysTil10k = milliTil10k/milliInADay; 
-
-        var date10k = new Date(milli10k+bday.getTime());
-
-        var month = date10k.getMonth() + 1
-        var day = date10k.getDate()
-        var year = date10k.getFullYear ()
-        var daysin77 = (77.28*365.25);
-        var daysTilDie = daysin77-days;
-        
-        document.getElementById("days").innerHTML="You are<br> "+Math.round(days)+" days old";  
-        document.getElementById("tilDeath").innerHTML="According to the average lifespan,<br>you have "+Math.round(daysTilDie)+" days to live<br><br> Enjoy.";
-    }
-
-    function showTime(){
-    var date = new Date();
-    var h = date.getHours(); 
-    var m = date.getMinutes(); 
-    var s = date.getSeconds(); 
-    var session = "AM";
+        //Function to get number of days lived and number of days left
+        function age()
+        {
+            var bday = new Date(document.getElementById("bday").value);
+            var today = (new Date().getTime());
+            var age = today-(bday.getTime());
+            var milliInADay = 1000*60*60*24;
+            var days= age/milliInADay;
+            var milli10k = 10000 * milliInADay;
+            var milliTil10k = milli10k-age; 
+            var daysTil10k = milliTil10k/milliInADay; 
+            var date10k = new Date(milli10k+bday.getTime());
+            var month = date10k.getMonth() + 1
+            var day = date10k.getDate()
+            var year = date10k.getFullYear ()
+            var daysin77 = (77.28*365.25);
+            var daysTilDie = daysin77-days;
+            
+            document.getElementById("days").innerHTML="You are<br> "+Math.round(days)+" days old";  
+            document.getElementById("tilDeath").innerHTML="According to the average lifespan,<br>you have "+Math.round(daysTilDie)+" days to live<br><br> Enjoy.";
+        }
+        //Function for digital clock
+        function showTime(){
+            var date = new Date();
+            var h = date.getHours(); 
+            var m = date.getMinutes(); 
+            var s = date.getSeconds(); 
+            var session = "AM";
+            
+            if(h == 0){
+                h = 12; 
+            }
+            
+            if(h > 12){
+                h = h - 12;
+                session = "PM";
+            }
+            
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            
+            var time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("DigitalCLOCK").innerText = time;
+            document.getElementById("DigitalCLOCK").textContent = time;
+            
+            setTimeout(showTime, 1000);
+            
+        }
     
-    if(h == 0){
-        h = 12;
-    }
-    
-    if(h > 12){
-        h = h - 12;
-        session = "PM";
-    }
-    
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-    
-    var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("DigitalCLOCK").innerText = time;
-    document.getElementById("DigitalCLOCK").textContent = time;
-    
-    setTimeout(showTime, 1000);
-    
-}
- 
-showTime();
-
+        showTime();
     </script>
 </body>
 </html>

@@ -92,3 +92,23 @@ hr {
 h2 {
     margin: 0;
 }
+button {
+    font-family: 'Vollkorn', serif;
+    font-size: 22px;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 25px 0 0 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    color: rgb(165, 165, 165);
+}
+
+input {
+    width: 100px;
+    height: 20px;
+  }
